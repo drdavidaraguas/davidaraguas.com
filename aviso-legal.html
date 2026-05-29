@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aviso legal — Dr. David Araguás</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --line: #1f1f1d;
+      --fg: #ece3d0;
+      --fg-soft: #d8cfba;
+      --fg-mute: #8a857a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--fg-soft); text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { color: var(--fg); }
+
+    /* Navbar */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      border-bottom: 1px solid var(--line);
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(18px);
+      padding: 0 32px; height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo-link { text-decoration: none; display: flex; align-items: center; gap: 10px; }
+    .logo-link img { height: 28px; width: auto; }
+    .back-link {
+      font-size: 13px; color: var(--fg-mute); text-decoration: none;
+      letter-spacing: 0.04em; transition: color 200ms;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .back-link:hover { color: var(--fg); }
+
+    /* Content */
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 120px 32px 80px;
+    }
+    .page-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--fg-mute);
+      margin-bottom: 24px;
+    }
+    h1 {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--fg);
+      margin-bottom: 12px;
+    }
+    .updated {
+      font-size: 13px;
+      color: var(--fg-mute);
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--line);
+    }
+    h2 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--fg);
+      margin: 40px 0 12px;
+      letter-spacing: -0.01em;
+    }
+    p {
+      color: var(--fg-soft);
+      margin-bottom: 16px;
+      font-size: 15px;
+    }
+    ul {
+      color: var(--fg-soft);
+      font-size: 15px;
+      padding-left: 20px;
+      margin-bottom: 16px;
+    }
+    li { margin-bottom: 6px; }
+    strong { color: var(--fg); font-weight: 500; }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 24px 32px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+      max-width: 720px; margin: 0 auto;
+    }
+    footer span { font-size: 12px; color: var(--fg-mute); }
+    .legal-links { display: flex; gap: 16px; }
+    .legal-links a {
+      font-size: 11px; color: var(--fg-mute); text-decoration: none;
+      letter-spacing: 0.04em; transition: color 200ms;
+    }
+    .legal-links a:hover { color: var(--fg-soft); }
+
+    @media (max-width: 640px) {
+      .container { padding: 100px 20px 60px; }
+      nav { padding: 0 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="logo-link">
+      <img src="./logo-da-white.png" alt="DA — Dr. David Araguás" />
+    </a>
+    <a href="/" class="back-link">
+      ← Volver a la web
+    </a>
+  </nav>
+
+  <div class="container">
+    <h1>Aviso legal</h1>
+    
+    <h2>Titular del sitio web</h2>
+    <p>En cumplimiento de la normativa aplicable sobre servicios de la sociedad de la información, se facilitan los siguientes datos identificativos:</p>
+    <ul>
+      <li><strong>Titular:</strong> David Araguás</li>
+      <li><strong>Sitio web:</strong> davidaraguas.com</li>
+      <li><strong>Contacto:</strong> <a href="mailto:contacto@davidaraguas.com">contacto@davidaraguas.com</a></li>
+    </ul>
+
+    <h2>Objeto y ámbito de aplicación</h2>
+    <p>El presente Aviso Legal regula el acceso y uso del sitio web <strong>davidaraguas.com</strong>. El acceso y navegación por este sitio implica la aceptación expresa de las condiciones aquí recogidas.</p>
+
+    <h2>Propiedad intelectual e industrial</h2>
+    <p>Todos los contenidos del sitio web —incluyendo textos, imágenes, logotipos, diseño y código fuente— son propiedad de David Araguás o de terceros que han autorizado su uso. Queda expresamente prohibida su reproducción, distribución, comunicación pública o transformación sin autorización previa y por escrito del titular.</p>
+
+    <h2>Responsabilidad</h2>
+    <p>El titular no se hace responsable de los daños o perjuicios que pudieran derivarse del acceso, uso o interpretación de la información contenida en este sitio web. Los contenidos tienen carácter meramente informativo y no constituyen en ningún caso asesoramiento médico personalizado.</p>
+    <p>Para cualquier consulta médica, se recomienda acudir a un profesional de la salud cualificado.</p>
+
+    <h2>Legislación aplicable</h2>
+    <p>Este Aviso Legal se rige por la normativa europea vigente en materia de servicios digitales y protección de datos.</p>
+
+  </div>
+
+  <footer>
+    <span>© 2026 Dr. David Araguás</span>
+    <div class="legal-links">
+      <a href="/aviso-legal.html">Aviso legal</a>
+      <a href="/politica-de-privacidad.html">Política de privacidad</a>
+      <a href="/politica-de-cookies.html">Política de cookies</a>
+    </div>
+  </footer>
+
+</body>
+</html>

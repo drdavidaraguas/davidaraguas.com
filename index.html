@@ -959,8 +959,12 @@
         <img src="./logo-da-white.png" alt="DA" class="footer-logo" id="footer-logo" />
         <span style="color: var(--fg-mute); font-size: 13px;">© 2026 Dr. David Araguás</span>
       </div>
-
       <div class="mono" style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--fg-mute);">Made with Care</div>
+    </div>
+    <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 20px;">
+      <a href="./aviso-legal.html" style="font-size: 11px; color: var(--fg-mute); text-decoration: none; letter-spacing: 0.04em; transition: color 200ms ease;" onmouseover="this.style.color='var(--fg-soft)'" onmouseout="this.style.color='var(--fg-mute)'">Aviso legal</a>
+      <a href="./politica-de-privacidad.html" style="font-size: 11px; color: var(--fg-mute); text-decoration: none; letter-spacing: 0.04em; transition: color 200ms ease;" onmouseover="this.style.color='var(--fg-soft)'" onmouseout="this.style.color='var(--fg-mute)'">Política de privacidad</a>
+      <a href="./politica-de-cookies.html" style="font-size: 11px; color: var(--fg-mute); text-decoration: none; letter-spacing: 0.04em; transition: color 200ms ease;" onmouseover="this.style.color='var(--fg-soft)'" onmouseout="this.style.color='var(--fg-mute)'">Política de cookies</a>
     </div>
 
   </div>
@@ -1129,6 +1133,19 @@
     <button onclick="document.getElementById('mayo-lb').style.display='none'" style="position:absolute; top:-14px; right:-14px; background:#0a0a0a; border:1px solid rgba(255,255,255,0.15); border-radius:999px; width:34px; height:34px; color:#ece3d0; font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center;">×</button>
   </div>
 </div>
+
+<div id="cookie-banner" style="position:fixed;bottom:0;left:0;right:0;z-index:99999;background:rgba(10,10,10,0.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid rgba(236,227,208,0.12);padding:20px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;font-family:'Hanken Grotesk',sans-serif;transform:translateY(100%);transition:transform 400ms cubic-bezier(.2,.7,.2,1);">
+  <p style="font-size:13px;color:rgba(236,227,208,0.7);line-height:1.6;max-width:680px;margin:0;">Este sitio utiliza cookies técnicas necesarias y cookies de terceros. Consulta nuestra <a href="./politica-de-privacidad.html" style="color:rgba(236,227,208,0.9);text-decoration:underline;text-underline-offset:3px;">política de privacidad</a> y <a href="./politica-de-cookies.html" style="color:rgba(236,227,208,0.9);text-decoration:underline;text-underline-offset:3px;">política de cookies</a>.</p>
+  <div style="display:flex;gap:12px;flex-shrink:0;">
+    <button onclick="rejectCookies()" style="padding:10px 20px;font-size:13px;font-family:'Hanken Grotesk',sans-serif;background:transparent;border:1px solid rgba(236,227,208,0.25);border-radius:999px;color:rgba(236,227,208,0.6);cursor:pointer;letter-spacing:0.02em;" onmouseover="this.style.color='rgba(236,227,208,0.9)';this.style.borderColor='rgba(236,227,208,0.5)'" onmouseout="this.style.color='rgba(236,227,208,0.6)';this.style.borderColor='rgba(236,227,208,0.25)'">Solo necesarias</button>
+    <button onclick="acceptCookies()" style="padding:10px 20px;font-size:13px;font-family:'Hanken Grotesk',sans-serif;background:rgba(236,227,208,1);border:none;border-radius:999px;color:#0a0a0a;cursor:pointer;font-weight:500;letter-spacing:0.02em;" onmouseover="this.style.background='rgba(255,255,255,1)'" onmouseout="this.style.background='rgba(236,227,208,1)'">Aceptar todo</button>
+  </div>
+</div>
+<script>
+  (function(){var b=document.getElementById('cookie-banner');if(!localStorage.getItem('cookie-consent')){setTimeout(function(){b.style.transform='translateY(0)';},800);}})();
+  function acceptCookies(){localStorage.setItem('cookie-consent','accepted');document.getElementById('cookie-banner').style.transform='translateY(100%)';}
+  function rejectCookies(){localStorage.setItem('cookie-consent','rejected');document.getElementById('cookie-banner').style.transform='translateY(100%)';}
+</script>
 </body>
 </html>
 

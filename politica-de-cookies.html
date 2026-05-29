@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de cookies — Dr. David Araguás</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --line: #1f1f1d;
+      --fg: #ece3d0;
+      --fg-soft: #d8cfba;
+      --fg-mute: #8a857a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--fg-soft); text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { color: var(--fg); }
+
+    /* Navbar */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      border-bottom: 1px solid var(--line);
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(18px);
+      padding: 0 32px; height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo-link { text-decoration: none; display: flex; align-items: center; gap: 10px; }
+    .logo-link img { height: 28px; width: auto; }
+    .back-link {
+      font-size: 13px; color: var(--fg-mute); text-decoration: none;
+      letter-spacing: 0.04em; transition: color 200ms;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .back-link:hover { color: var(--fg); }
+
+    /* Content */
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 120px 32px 80px;
+    }
+    .page-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--fg-mute);
+      margin-bottom: 24px;
+    }
+    h1 {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--fg);
+      margin-bottom: 12px;
+    }
+    .updated {
+      font-size: 13px;
+      color: var(--fg-mute);
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--line);
+    }
+    h2 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--fg);
+      margin: 40px 0 12px;
+      letter-spacing: -0.01em;
+    }
+    p {
+      color: var(--fg-soft);
+      margin-bottom: 16px;
+      font-size: 15px;
+    }
+    ul {
+      color: var(--fg-soft);
+      font-size: 15px;
+      padding-left: 20px;
+      margin-bottom: 16px;
+    }
+    li { margin-bottom: 6px; }
+    strong { color: var(--fg); font-weight: 500; }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 24px 32px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+      max-width: 720px; margin: 0 auto;
+    }
+    footer span { font-size: 12px; color: var(--fg-mute); }
+    .legal-links { display: flex; gap: 16px; }
+    .legal-links a {
+      font-size: 11px; color: var(--fg-mute); text-decoration: none;
+      letter-spacing: 0.04em; transition: color 200ms;
+    }
+    .legal-links a:hover { color: var(--fg-soft); }
+
+    @media (max-width: 640px) {
+      .container { padding: 100px 20px 60px; }
+      nav { padding: 0 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="logo-link">
+      <img src="./logo-da-white.png" alt="DA — Dr. David Araguás" />
+    </a>
+    <a href="/" class="back-link">
+      ← Volver a la web
+    </a>
+  </nav>
+
+  <div class="container">
+    <h1>Política de cookies</h1>
+    
+    <h2>¿Qué son las cookies?</h2>
+    <p>Las cookies son pequeños archivos de texto que se almacenan en su dispositivo cuando visita un sitio web. Permiten que el sitio recuerde sus preferencias y mejore su experiencia de navegación.</p>
+
+    <h2>Marco normativo</h2>
+    <p>Esta política se aplica de conformidad con el <strong>Reglamento (UE) 2016/679</strong> (RGPD) y la normativa europea aplicable en materia de privacidad y comunicaciones electrónicas.</p>
+
+    <h2>Cookies técnicas propias</h2>
+    <ul>
+      <li><strong>cookie-consent</strong> — Almacena su preferencia sobre el consentimiento de cookies. Duración: 1 año. No transmite datos a terceros.</li>
+    </ul>
+
+    <h2>Cookies de terceros</h2>
+    <ul>
+      <li><strong>Google Fonts</strong> — Este sitio carga tipografías desde los servidores de Google, lo que puede implicar la transmisión de su dirección IP a Google. Consulte la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">política de privacidad de Google</a>.</li>
+    </ul>
+
+    <h2>Cómo gestionar las cookies</h2>
+    <p>Puede configurar su navegador para bloquear o eliminar cookies:</p>
+    <ul>
+      <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Google Chrome</a></li>
+      <li><a href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias" target="_blank" rel="noopener">Mozilla Firefox</a></li>
+      <li><a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank" rel="noopener">Apple Safari</a></li>
+    </ul>
+
+    <h2>Contacto</h2>
+    <p>Para cualquier consulta sobre el uso de cookies puede escribirnos a <a href="mailto:contacto@davidaraguas.com">contacto@davidaraguas.com</a>.</p>
+
+  </div>
+
+  <footer>
+    <span>© 2026 Dr. David Araguás</span>
+    <div class="legal-links">
+      <a href="/aviso-legal.html">Aviso legal</a>
+      <a href="/politica-de-privacidad.html">Política de privacidad</a>
+      <a href="/politica-de-cookies.html">Política de cookies</a>
+    </div>
+  </footer>
+
+</body>
+</html>

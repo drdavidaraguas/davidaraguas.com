@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de privacidad — Dr. David Araguás</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --line: #1f1f1d;
+      --fg: #ece3d0;
+      --fg-soft: #d8cfba;
+      --fg-mute: #8a857a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--fg-soft); text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { color: var(--fg); }
+
+    /* Navbar */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      border-bottom: 1px solid var(--line);
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(18px);
+      padding: 0 32px; height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo-link { text-decoration: none; display: flex; align-items: center; gap: 10px; }
+    .logo-link img { height: 28px; width: auto; }
+    .back-link {
+      font-size: 13px; color: var(--fg-mute); text-decoration: none;
+      letter-spacing: 0.04em; transition: color 200ms;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .back-link:hover { color: var(--fg); }
+
+    /* Content */
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 120px 32px 80px;
+    }
+    .page-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--fg-mute);
+      margin-bottom: 24px;
+    }
+    h1 {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--fg);
+      margin-bottom: 12px;
+    }
+    .updated {
+      font-size: 13px;
+      color: var(--fg-mute);
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--line);
+    }
+    h2 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--fg);
+      margin: 40px 0 12px;
+      letter-spacing: -0.01em;
+    }
+    p {
+      color: var(--fg-soft);
+      margin-bottom: 16px;
+      font-size: 15px;
+    }
+    ul {
+      color: var(--fg-soft);
+      font-size: 15px;
+      padding-left: 20px;
+      margin-bottom: 16px;
+    }
+    li { margin-bottom: 6px; }
+    strong { color: var(--fg); font-weight: 500; }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 24px 32px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+      max-width: 720px; margin: 0 auto;
+    }
+    footer span { font-size: 12px; color: var(--fg-mute); }
+    .legal-links { display: flex; gap: 16px; }
+    .legal-links a {
+      font-size: 11px; color: var(--fg-mute); text-decoration: none;
+      letter-spacing: 0.04em; transition: color 200ms;
+    }
+    .legal-links a:hover { color: var(--fg-soft); }
+
+    @media (max-width: 640px) {
+      .container { padding: 100px 20px 60px; }
+      nav { padding: 0 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="logo-link">
+      <img src="./logo-da-white.png" alt="DA — Dr. David Araguás" />
+    </a>
+    <a href="/" class="back-link">
+      ← Volver a la web
+    </a>
+  </nav>
+
+  <div class="container">
+    <h1>Política de privacidad</h1>
+    
+    <h2>Responsable del tratamiento</h2>
+    <ul>
+      <li><strong>Identidad:</strong> David Araguás</li>
+      <li><strong>Correo electrónico:</strong> <a href="mailto:contacto@davidaraguas.com">contacto@davidaraguas.com</a></li>
+    </ul>
+
+    <h2>Marco normativo</h2>
+    <p>El tratamiento de datos personales se realiza de conformidad con el <strong>Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo</strong> (RGPD) y demás normativa europea aplicable en materia de protección de datos.</p>
+
+    <h2>Datos que recogemos</h2>
+    <p>A través del formulario de contacto de este sitio web, recogemos los siguientes datos personales:</p>
+    <ul>
+      <li>Nombre</li>
+      <li>Dirección de correo electrónico</li>
+      <li>Mensaje enviado</li>
+    </ul>
+    <p>No se recogen datos especialmente sensibles ni se realizan perfiles de usuario.</p>
+
+    <h2>Finalidad y base legitimadora</h2>
+    <p>Los datos facilitados a través del formulario de contacto se utilizan exclusivamente para <strong>responder a su consulta o solicitud</strong>. La base legal del tratamiento es el consentimiento del interesado, prestado al enviar el formulario.</p>
+
+    <h2>Conservación de los datos</h2>
+    <p>Los datos se conservarán durante el tiempo necesario para gestionar su solicitud y, en su caso, durante los plazos legales aplicables. Una vez cumplida la finalidad, los datos serán eliminados de forma segura.</p>
+
+    <h2>Destinatarios</h2>
+    <p>Los datos no se ceden ni comunican a terceros, salvo obligación legal. El sitio web está alojado en <strong>Vercel Inc.</strong> (Estados Unidos), que actúa como encargado del tratamiento bajo las garantías adecuadas del RGPD.</p>
+
+    <h2>Derechos del interesado</h2>
+    <p>Puede ejercer en cualquier momento sus derechos de acceso, rectificación, supresión, oposición, limitación del tratamiento y portabilidad escribiendo a <a href="mailto:contacto@davidaraguas.com">contacto@davidaraguas.com</a>.</p>
+    <p>Tiene igualmente derecho a presentar una reclamación ante la autoridad de control competente en materia de protección de datos de su país de residencia.</p>
+
+    <h2>Seguridad</h2>
+    <p>Este sitio web utiliza protocolo HTTPS para garantizar la seguridad en la transmisión de datos. Se aplican las medidas técnicas y organizativas adecuadas para proteger sus datos frente a accesos no autorizados, pérdida o destrucción.</p>
+
+  </div>
+
+  <footer>
+    <span>© 2026 Dr. David Araguás</span>
+    <div class="legal-links">
+      <a href="/aviso-legal.html">Aviso legal</a>
+      <a href="/politica-de-privacidad.html">Política de privacidad</a>
+      <a href="/politica-de-cookies.html">Política de cookies</a>
+    </div>
+  </footer>
+
+</body>
+</html>
