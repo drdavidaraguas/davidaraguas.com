@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dr. David Araguás — Médico · CEO · Innovador en salud digital</title>
+<meta name="description" content="Dr. David Araguás. Médico colaborador de la Federación Española de Baloncesto y CEO & Founder de Clínica Digital. Medicina excelente, inmediata y humana." />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg-2: #111110;
+    --bg-3: #16161410;
+    --line: #1f1f1d;
+    --line-strong: #2a2a27;
+    --fg: #ece3d0;          /* bone — primary accent */
+    --fg-soft: #d8cfba;
+    --fg-mute: #8a857a;
+    --fg-dim:  #5a564e;
+    --warm: #ece3d0;
+    --warm-glow: rgba(236,227,208,0.08);
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Hanken Grotesk', system-ui, sans-serif;
+    font-weight: 400;
+    letter-spacing: -0.005em;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  .serif    { font-family: 'Instrument Serif', 'Times New Roman', serif; font-weight: 400; letter-spacing: -0.01em; }
+  .serif-i  { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; }
+  .mono     { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+  /* film grain */
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    mix-blend-mode: overlay;
+  }
+
+  /* subtle vignette */
+  body::after {
+    content: "";
+    position: fixed; inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(236,227,208,0.04), transparent 55%);
+  }
+
+  /* ====== navbar ====== */
+  .nav {
+    transition: backdrop-filter 280ms ease, background-color 280ms ease, border-color 280ms ease, padding 280ms ease;
+    border-bottom: 1px solid transparent;
+  }
+  .nav.scrolled {
+    background-color: rgba(10,10,10,0.55);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border-bottom-color: var(--line);
+  }
+  .nav a.nav-link {
+    position: relative;
+    color: var(--fg-soft);
+    transition: color 200ms ease;
+  }
+  .nav a.nav-link:hover { color: var(--fg); }
+  .nav a.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 100%;
+    bottom: -6px;
+    height: 1px;
+    background: var(--fg);
+    transition: right 320ms cubic-bezier(.2,.7,.2,1);
+  }
+  .nav a.nav-link:hover::after { right: 0; }
+
+  .logo-img {
+    height: 40px;
+    width: auto;
+    display: block;
+    filter: brightness(1.05) drop-shadow(0 1px 0 rgba(236,227,208,0.08));
+    transition: opacity 200ms ease, transform 320ms ease;
+  }
+  a:hover > .logo-img { transform: scale(1.04); }
+  .footer-logo {
+    height: 32px;
+    width: auto;
+    display: block;
+    filter: brightness(1.05);
+  }
+
+  /* ====== buttons ====== */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 22px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    border-radius: 999px;
+    transition: all 240ms cubic-bezier(.2,.7,.2,1);
+    cursor: pointer;
+    border: 1px solid transparent;
+    will-change: transform;
+  }
+  .btn-primary {
+    background: var(--fg);
+    color: #0a0a0a;
+  }
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 32px -12px rgba(236,227,208,0.45);
+    background: #fff;
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--fg);
+    border-color: var(--line-strong);
+  }
+  .btn-ghost:hover {
+    border-color: var(--fg-soft);
+    background: rgba(236,227,208,0.04);
+  }
+  .btn .arrow {
+    transition: transform 240ms cubic-bezier(.2,.7,.2,1);
+  }
+  .btn:hover .arrow { transform: translateX(4px); }
+
+  /* ====== image cards ====== */
+  .img-frame {
+    position: relative;
+    overflow: hidden;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    isolation: isolate;
+  }
+  .img-frame img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1200ms cubic-bezier(.2,.7,.2,1), filter 600ms ease;
+  }
+  .img-frame::after {
+    content: "";
+    position: absolute; inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(180deg, transparent 60%, rgba(10,10,10,0.55) 100%),
+      radial-gradient(120% 60% at 100% 100%, rgba(0,0,0,0.4), transparent 60%);
+  }
+  .img-frame:hover img { transform: scale(1.03); }
+
+  /* image placeholder when src missing — elegant fallback */
+  .img-frame.broken img { opacity: 0; }
+  .img-frame.broken::before {
+    content: attr(data-fallback);
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg-mute);
+    background:
+      repeating-linear-gradient(135deg, #16161420 0, #16161420 12px, #1c1c1a 12px, #1c1c1a 24px);
+    z-index: 1;
+  }
+
+  /* ====== labels / eyebrows ====== */
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--fg-mute);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background: var(--fg-mute);
+  }
+
+  /* ====== scroll reveal ====== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 900ms cubic-bezier(.2,.7,.2,1), transform 900ms cubic-bezier(.2,.7,.2,1);
+    transition-delay: var(--delay, 0ms);
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* ====== timeline ====== */
+  .tl-item {
+    position: relative;
+    padding-left: 68px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid var(--line);
+  }
+  .tl-item:last-child { border-bottom: 1px solid var(--line); }
+  .tl-dot {
+    position: absolute;
+    left: 0;
+    top: 36px;
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: var(--bg);
+    border: 1px solid var(--fg-mute);
+    transition: all 320ms ease;
+  }
+  .tl-item.present .tl-dot {
+    background: var(--fg);
+    border-color: var(--fg);
+    box-shadow: 0 0 0 4px rgba(236,227,208,0.12);
+  }
+  .tl-line {
+    position: absolute;
+    left: 4.5px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--line);
+  }
+  .tl-item:hover .tl-dot {
+    border-color: var(--fg);
+    background: var(--fg);
+  }
+
+  /* ====== form ====== */
+  .field {
+    position: relative;
+    border-bottom: 1px solid var(--line-strong);
+    transition: border-color 240ms ease;
+  }
+  .field:focus-within { border-color: var(--fg); }
+  .field label {
+    position: absolute;
+    left: 0;
+    top: 18px;
+    color: var(--fg-mute);
+    font-size: 14px;
+    pointer-events: none;
+    transition: all 220ms cubic-bezier(.2,.7,.2,1);
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 11px;
+  }
+  .field input, .field textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--fg);
+    font-size: 17px;
+    font-family: inherit;
+    padding: 32px 0 14px;
+    resize: none;
+  }
+  .field textarea { min-height: 110px; line-height: 1.55; }
+  .field input:focus + label,
+  .field input:not(:placeholder-shown) + label,
+  .field textarea:focus + label,
+  .field textarea:not(:placeholder-shown) + label {
+    top: 6px;
+    color: var(--fg-soft);
+  }
+  .field.error { border-color: #c97a6b; }
+  .field.error label { color: #c97a6b; }
+  .field .err-msg {
+    position: absolute;
+    right: 0;
+    top: 6px;
+    font-size: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #c97a6b;
+    opacity: 0;
+    transition: opacity 200ms ease;
+  }
+  .field.error .err-msg { opacity: 1; }
+
+  .form-status {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: all 320ms ease;
+    pointer-events: none;
+  }
+  .form-status.visible { opacity: 1; transform: none; }
+
+  /* ====== utility ====== */
+  .hairline { height: 1px; background: var(--line); }
+  .marquee-soft {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--line-strong);
+  }
+
+  /* Hero crossed grid */
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+  }
+
+  /* About asymmetric */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 80px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  /* Projects layout */
+  .proj-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 32px;
+  }
+  @media (max-width: 900px) {
+    .proj-grid { grid-template-columns: 1fr; }
+    .proj-grid > * { grid-column: 1 / -1 !important; }
+  }
+
+  /* Contact layout */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 5fr 6fr;
+    gap: 80px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 56px; }
+  }
+
+  /* selection */
+  ::selection { background: var(--fg); color: #0a0a0a; }
+
+  /* mobile nav */
+  .nav-mobile { display: none; }
+  @media (max-width: 720px) {
+    .nav-desktop { display: none; }
+    .nav-mobile  { display: flex; }
+  }
+
+  /* container */
+  .container-x {
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  @media (max-width: 640px) {
+    .container-x { padding-left: 20px; padding-right: 20px; }
+  }
+
+  /* "scroll" cue */
+  .scroll-cue {
+    position: absolute;
+    left: 32px;
+    bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--fg-mute);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .scroll-cue .bar {
+    width: 1px;
+    height: 56px;
+    background: linear-gradient(to bottom, var(--fg-mute) 0%, transparent 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .scroll-cue .bar::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--fg);
+    transform: translateY(-100%);
+    animation: scrollPulse 2.2s cubic-bezier(.7,.1,.3,.9) infinite;
+  }
+  @keyframes scrollPulse {
+    0% { transform: translateY(-100%); }
+    60% { transform: translateY(100%); }
+    100% { transform: translateY(100%); }
+  }
+
+  /* small caps numbers */
+  .num-key {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--fg-mute);
+    letter-spacing: 0.12em;
+  }
+
+  /* Big italic accent that breaks the grid in hero */
+  .accent-italic {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    color: var(--fg);
+    position: relative;
+    white-space: nowrap;
+  }
+
+  /* Hero image — remove dark overlay box */
+  .hero-img-wrap .img-frame::after {
+    display: none;
+  }
+  .hero-img-wrap .img-frame {
+    border: none !important;
+    background: transparent !important;
+  }
+
+  /* DA monogram fallback (in case logo png is missing) */
+  .da-mono {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 30px;
+    color: var(--fg);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  /* ====== MOBILE FIXES ====== */
+  @media (max-width: 720px) {
+    /* Hero */
+    header#top {
+      padding: 100px 0 60px !important;
+      min-height: auto !important;
+    }
+    .hero-grid {
+      gap: 40px;
+    }
+
+    /* Scroll cue on mobile */
+    .scroll-cue {
+      position: relative;
+      left: auto;
+      bottom: auto;
+      transform: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 48px;
+      padding-bottom: 0;
+    }
+    .scroll-cue .bar {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, var(--fg-mute) 0%, transparent 100%);
+    }
+    .scroll-cue .bar::after { display: block; }
+
+    /* Marquee divider - always visible */
+    .container-x.reveal .serif.marquee-soft {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+
+    /* About section */
+    .about-grid {
+      grid-template-columns: 1fr !important;
+      gap: 32px;
+    }
+    /* Show 01 SOBRE MÍ above the photo on mobile */
+    .about-section-header {
+      display: block !important;
+    }
+
+    /* Experience header side column - full width on mobile */
+    .lg\:col-span-6 {
+      width: 100% !important;
+      height: auto !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    /* Tighten section paddings on small screens */
+    section { 
+      padding-top: 60px !important;
+      padding-bottom: 72px !important;
+    }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ============ NAVBAR ============ -->
+<nav id="nav" class="nav fixed top-0 left-0 right-0 z-50">
+  <div class="container-x flex items-center justify-between" style="height: 78px">
+    <a href="#top" class="flex items-center gap-3" aria-label="Inicio — Dr. David Araguás">
+      <img src="./images/logo-da-white.png" alt="DA — Dr. David Araguás" class="logo-img" id="logo-img" />
+    </a>
+
+    <div class="nav-desktop flex items-center gap-10 text-[13px] tracking-wide" style="font-weight: 500;">
+      <a href="#about"      class="nav-link" style="color: rgb(236, 227, 208); text-align: left">Sobre mí</a>
+      <a href="#experience" class="nav-link">Experiencia</a>
+      <a href="#projects"   class="nav-link">Proyectos</a>
+      <a href="#contact"    class="nav-link">Contacto</a>
+    </div>
+
+    <button class="nav-mobile items-center justify-center" id="menu-btn" aria-label="Menú" style="width: 44px; height: 44px; border: 1px solid var(--line-strong); border-radius: 999px;">
+      <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M0 1h16M0 9h10" stroke="currentColor" stroke-width="1.2"/></svg>
+    </button>
+  </div>
+
+  <!-- mobile drawer -->
+  <div id="mobile-drawer" class="hidden" style="border-top: 1px solid var(--line); background: rgba(10,10,10,0.92); backdrop-filter: blur(18px);">
+    <div class="container-x py-6 flex flex-col gap-5 text-base">
+      <a href="#about"      class="nav-link mobile-link">Sobre mí</a>
+      <a href="#experience" class="nav-link mobile-link">Experiencia</a>
+      <a href="#projects"   class="nav-link mobile-link">Proyectos</a>
+      <a href="#contact"    class="nav-link mobile-link">Contacto</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header id="top" class="relative" style="position: relative; padding: 100px 0px 96px; min-height: 820px;">
+  <div class="container-x relative" style="z-index: 2; font-weight: 400; text-align: left">
+
+    <div class="hero-grid">
+
+      <!-- left: text -->
+      <div>
+        <h1 class="serif reveal" style="font-size: clamp(56px, 9vw, 132px); line-height: 0.94; letter-spacing: -0.02em; color: rgb(236, 227, 208)">Dr. David Araguás</h1>
+
+        <p class="reveal" style="--delay: 80ms; margin-top: 32px; max-width: 480px; font-size: 18px; line-height: 1.65; color: var(--fg-soft)">Medicina personalizada, longevidad y <em style="font-family:'Instrument Serif',serif;font-style:italic;">rendimiento</em>.<br>Para cualquier persona, en cualquier lugar.</p>
+
+        <div class="reveal flex flex-wrap items-center gap-3" style="--delay: 160ms; margin-top: 44px;">
+          <a href="#contact" class="btn btn-primary">Contactar</a>
+          <a href="#about" class="btn btn-ghost">
+            Descubrir más
+          </a>
+        </div>
+
+        <div class="reveal flex items-center gap-10 mt-16" style="--delay: 240ms;">
+          <div>
+            <div class="num-key mb-2">Actualmente</div>
+            <div style="font-size: 15px; color: var(--fg);">CEO &amp; Founder<br /><span style="color: var(--fg-mute);">Clínica Digital</span></div>
+          </div>
+          <div style="width: 1px; height: 44px; background: var(--line-strong);"></div>
+          <div>
+            <div class="num-key mb-2">En paralelo</div>
+            <div style="font-size: 15px; color: var(--fg);">Médico colaborador<br /><span style="color: var(--fg-mute);">Federación Española de Baloncesto</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- right: hero image -->
+      <div class="reveal hero-img-wrap" style="--delay: 320ms; position: relative;">
+        <div class="img-frame" data-fallback="hero.jpg · Traje azul marino, brazos cruzados" style="aspect-ratio: 4/5; border-radius: 4px; border: none; background: transparent; overflow: hidden;">
+          <img src="./images/hero.jpg" alt="Dr. David Araguás retrato profesional" style="width: 100%; height: 100%; object-fit: cover; object-position: center 15%; display: block;" />
+        </div>
+
+        <!-- floating typographic accent that breaks grid -->
+        <div class="hidden md:block" style="position: absolute; left: -64px; bottom: 48px; transform: rotate(-90deg); transform-origin: left bottom;">
+          <span class="mono" style="font-size: 10px; color: var(--fg-mute); letter-spacing: 0.32em; text-transform: uppercase;"></span>
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="scroll-cue">
+    <span>Desliza</span>
+    <div class="bar"></div>
+  </div>
+</header>
+
+<!-- soft marquee divider -->
+<div class="container-x reveal" style="padding-top: 56px; padding-bottom: 24px;">
+  <div class="serif marquee-soft" style="font-size: clamp(48px, 11vw, 168px); line-height: 1; letter-spacing: -0.02em; white-space: nowrap; overflow: hidden;">salud · rendimiento · medicina</div>
+</div>
+
+<!-- ============ SOBRE MÍ ============ -->
+<section id="about" class="relative" style="padding-top: 80px; padding-bottom: 100px;">
+  <div class="container-x relative" style="z-index: 2;">
+
+    <div class="flex items-baseline justify-between mb-12 reveal">
+      <span class="eyebrow">01 — SOBRE MÍ</span>
+    </div>
+
+    <div class="about-grid" style="color: rgb(216, 207, 186)">
+
+      <!-- image -->
+      <div class="reveal">
+        <div class="img-frame" data-fallback="sitting.jpg · Sentado, sonriendo, cercano" style="aspect-ratio: 4/5; border-radius: 4px;">
+          <img src="./images/sitting.jpg" alt="Dr. David Araguás en una conversación cercana" loading="lazy" />
+        </div>
+        <div class="mt-5 flex items-center justify-between">
+          <span class="num-key">— Escaldes-Engordany, 2026</span>
+          <span class="num-key">FIG. 02</span>
+        </div>
+      </div>
+
+      <!-- text -->
+      <div>
+        <h2 class="serif reveal" style="font-size: clamp(38px, 5.5vw, 76px); line-height: 1.02; letter-spacing: -0.02em; color: var(--fg); max-width: 720px;">Estudié medicina porque quería cambiar vidas. Sigo haciéndolo, a gran escala.</h2>
+
+        <div class="mt-12 grid gap-6 reveal" style="--delay: 120ms; max-width: 580px; font-size: 17px; line-height: 1.7; color: var(--fg-soft); text-align: justify;">
+          <p>Me gradúé en Medicina en la Universidad de Zaragoza y he realizado estancias de formación en centros de referencia mundial como la Clínica Mayo de Rochester (Estados Unidos) y el Instituto Suizo de Formación Médica.</p>
+          <p>Trabajo para transformar la medicina, eliminando barreras y acercando una atención médica excelente, inmediata y humana a cualquier persona, en cualquier lugar.</p>
+          <p>Mi mayor motivación es simple y poderosa: mejorar la vida de las personas.</p>
+        </div>
+
+        <!-- idiomas -->
+        <div class="mt-10 reveal" style="--delay: 200ms;">
+          <div class="num-key mb-2">Idiomas</div>
+          <div style="font-size: 15px; color: var(--fg);">ES · EN · IT · CA</div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCIA ============ -->
+<section id="experience" class="relative" style="padding-top: 80px; padding-bottom: 100px;">
+  <div class="container-x">
+
+    <div class="grid lg:grid-cols-12 gap-8 mb-10">
+      <div class="lg:col-span-5 reveal">
+        <div class="eyebrow mb-6">03 — Experiencia</div>
+        <h2 class="serif" style="font-size: clamp(40px, 5vw, 76px); line-height: 1.02; letter-spacing: -0.02em;">
+          Una trayectoria <span class="serif-i">internacional</span>.
+        </h2>
+      </div>
+
+    </div>
+
+    <div class="grid lg:grid-cols-12 gap-16">
+      <!-- timeline column -->
+      <div class="lg:col-span-10 reveal" style="position: relative;">
+        <div class="tl-line"></div>
+
+        <div class="tl-item">
+          <span class="tl-dot"></span>
+          <div class="flex items-baseline justify-between gap-6 flex-wrap">
+            <div>
+              <h3 class="serif" style="font-size: 28px; line-height: 1.1;">Universidad de Zaragoza</h3>
+              <p class="mt-2" style="font-size: 14px; color: var(--fg-mute);">Facultad de Medicina</p>
+            </div>
+            <span class="mono" style="font-size: 11px; color: var(--fg-mute); letter-spacing: 0.12em;">FORMACIÓN</span>
+          </div>
+        </div>
+
+        <div class="tl-item" style="padding: 28px 0px 10px 68px">
+          <span class="tl-dot"></span>
+          <div class="flex items-start justify-between gap-6 flex-wrap">
+            <div class="flex-1" style="min-width: 0;">
+              <h3 class="serif" style="font-size: 28px; line-height: 1.1;">Mayo Clinic</h3>
+              <p class="mt-2" style="font-size: 14px; color: var(--fg-mute);">Rochester, Minnesota · EE.UU.</p>
+              <p class="mt-3" style="font-size: 15px; color: var(--fg-soft); max-width: 440px; line-height: 1.55;">
+</p>
+            </div>
+            <div class="img-frame" data-fallback="mayo.jpg" style="width: 120px; height: 120px; border-radius: 4px; flex-shrink: 0;">
+              <img src="./images/mayo.jpg" alt="David frente al edificio Mayo Clinic" loading="lazy" style="width:100%; height:100%; object-fit:cover;" />
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <span class="tl-dot"></span>
+          <div class="flex items-baseline justify-between gap-6 flex-wrap">
+            <div>
+              <h3 class="serif" style="font-size: 28px; line-height: 1.1;">Instituto Suizo de Formación Médica</h3>
+              <p class="mt-2" style="font-size: 14px; color: var(--fg-mute);">Suiza · Ente Ospedaliero Cantonale</p>
+            </div>
+            <span class="mono" style="font-size: 11px; color: var(--fg-mute); letter-spacing: 0.12em;">ISFM</span>
+          </div>
+        </div>
+
+        <div class="tl-item" style="padding: 28px 0px 10px 68px">
+          <span class="tl-dot"></span>
+          <div class="flex items-baseline justify-between gap-6 flex-wrap">
+            <div>
+              <h3 class="serif" style="font-size: 28px; line-height: 1.1;">Real Federación Española de Tenis</h3>
+              <p class="mt-2" style="font-size: 14px; color: var(--fg-mute);">Médico</p>
+              <p class="mt-3" style="font-size: 15px; color: var(--fg-soft); max-width: 440px; line-height: 1.55;">
+</p>
+            </div>
+            <span class="mono" style="font-size: 11px; color: var(--fg-mute); letter-spacing: 0.12em;">RFET</span>
+          </div>
+        </div>
+
+        <div class="tl-item present">
+          <span class="tl-dot"></span>
+          <div class="flex items-baseline justify-between gap-6 flex-wrap">
+            <div>
+              <h3 class="serif" style="font-size: 28px; line-height: 1.1;">Federación Española de Baloncesto</h3>
+              <p class="mt-2" style="font-size: 14px; color: var(--fg-mute);">Médico colaborador · Alto rendimiento
+</p>
+            </div>
+            <span class="mono" style="font-size: 11px; color: rgb(138, 133, 122); letter-spacing: 0.12em">FEB</span>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ PROYECTOS ============ -->
+<section id="projects" class="relative" style="padding-top: 80px; padding-bottom: 100px;">
+  <div class="container-x">
+
+    <div class="flex items-baseline justify-between mb-16 reveal">
+      <span class="eyebrow">04 — Proyectos</span>
+      <span class="num-key">-</span>
+    </div>
+
+    <!-- ===== PROJECT 01 — CLINICA DIGITAL ===== -->
+    <article class="proj-grid mb-32 reveal">
+
+      <div class="col-span-12 lg:col-span-5" style="grid-column: span 5;">
+        <div class="num-key mb-4">Proyecto · 01</div>
+        <h3 class="serif" style="font-size: clamp(36px, 4.5vw, 64px); line-height: 1.02; letter-spacing: -0.02em;">
+          Clínica <span class="serif-i">Digital.</span>
+        </h3>
+        <p class="mt-6" style="font-size: 16px; line-height: 1.65; color: var(--fg-soft);">
+          La clínica que cabe en un bolsillo. Una plataforma de atención médica que conecta a pacientes con un equipo de profesionales en minutos, sin sala de espera y sin renunciar al rigor clínico de un centro de referencia.
+        </p>
+
+        <ul class="mt-8 space-y-3" style="font-size: 14px;">
+          <li class="flex items-center gap-3"><span class="mono" style="color: var(--fg-mute); width: 28px;">01</span><span>Consulta médica inmediata</span></li>
+          <li class="flex items-center gap-3"><span class="mono" style="color: var(--fg-mute); width: 28px;">02</span><span>Atención médica excelente</span></li>
+          <li class="flex items-center gap-3"><span class="mono" style="color: var(--fg-mute); width: 28px;">03</span><span>Seguimiento longitudinal</span></li>
+          <li class="flex items-center gap-3"><span class="mono" style="color: var(--fg-mute); width: 28px;">04</span><span>Multi-idioma</span></li>
+        </ul>
+
+        <a href="https://ClinicaDigital.com" target="_blank" rel="noopener" class="btn btn-ghost mt-10">
+          Visitar ClinicaDigital.com
+          <svg class="arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3M11 3H5M11 3v6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <!-- equipo médico -->
+      <div class="col-span-12 lg:col-span-7 lg:col-start-1" style="grid-column: 1 / span 7; margin-top: 56px;">
+        <div class="img-frame" data-fallback="team.jpg · Tres médicos en consulta moderna" style="aspect-ratio: 16/10; border-radius: 4px;">
+          <img src="./images/team.jpg" alt="Equipo médico de Clínica Digital" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center 55%;" />
+        </div>
+        <div class="mt-4 flex items-center justify-between">
+          <span class="num-key">— Equipo Médico, Clínica Digital</span>
+          <span class="num-key">FIG. 04</span>
+        </div>
+      </div>
+
+      <div class="col-span-12 lg:col-span-3 lg:col-start-9" style="grid-column: 9 / span 3; margin-top: 56px; align-self: end;">
+        <div class="num-key mb-3">Misión</div>
+        <p class="serif" style="font-size: 22px; line-height: 1.25;">Eliminar las barreras para el acceso a una atención médica excelente</p>
+      </div>
+
+    </article>
+
+    <!-- ===== PROJECT 02 — FEB ===== -->
+    <article class="proj-grid reveal">
+
+      <div class="col-span-12 lg:col-span-5" style="grid-column: span 5;">
+        <div class="num-key mb-4">Proyecto · 02</div>
+        <h3 class="serif" style="font-size: clamp(36px, 4.5vw, 64px); line-height: 1.02; letter-spacing: -0.02em;">
+          Federación Española de <span class="serif-i">Baloncesto.</span>
+        </h3>
+        <p class="mt-6" style="font-size: 16px; line-height: 1.65; color: var(--fg-soft);">Como médico acompaño a las selecciones nacionales en preparación y competición internacional. Trabajar con deportistas de élite es un laboratorio diario sobre cómo el cuerpo humano se adapta, se recupera y rinde bajo presión.</p>
+
+        <div class="grid grid-cols-2 gap-5 mt-10">
+          <div>
+            <div class="num-key mb-2">
+</div>
+            <div style="font-size: 15px;">
+</div>
+          </div>
+          <div>
+            <div class="num-key mb-2">
+</div>
+            <div style="font-size: 15px;">
+</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-span-12 lg:col-span-6 lg:col-start-7" style="grid-column: 7 / span 6;">
+        <div style="aspect-ratio: 16/10; border-radius: 4px; overflow: hidden;">
+          <img src="./images/basketball.jpg" alt="Dr. Araguás con la selección española de baloncesto femenina" loading="lazy" style="width:100%; height:100%; object-fit:cover; object-position: 15% center; display:block;" />
+        </div>
+        <div class="mt-4 flex items-center justify-between">
+          <span class="num-key">— Selección española de baloncesto U18F</span>
+          <span class="num-key">FIG. 05</span>
+        </div>
+      </div>
+
+    </article>
+
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section id="contact" class="relative" style="padding-top: 100px; padding-bottom: 140px; border-top: 1px solid var(--line);">
+  <div class="container-x">
+
+    <div class="contact-grid">
+
+      <!-- left -->
+      <div>
+        <div class="eyebrow mb-8 reveal">05 — Contacto</div>
+
+        <h2 class="serif reveal" style="font-size: clamp(40px, 5vw, 76px); line-height: 1.02; letter-spacing: -0.02em;">
+          Trabajemos<br /><span class="serif-i">juntos.</span>
+        </h2>
+
+        <p class="mt-8 reveal" style="--delay: 80ms; font-size: 17px; line-height: 1.65; color: var(--fg-soft); max-width: none; text-align: justify;">
+          Colaboraciones clínicas, prensa, conferencias o proyectos de salud digital. Respondo personalmente en menos de 48&nbsp;horas.
+        </p>
+
+        <div class="mt-12 reveal" style="--delay: 160ms;">
+          <div class="num-key mb-3">Contacto</div>
+          <a href="mailto:david@clinicadigital.com" class="serif" style="font-size: clamp(24px, 3vw, 40px); color: var(--fg); border-bottom: 1px solid var(--line-strong); padding-bottom: 6px; display: inline-block; transition: border-color 240ms;">contacto@davidaraguas.com</a>
+        </div>
+
+        <div class="mt-14 reveal" style="--delay: 240ms;">
+          <div class="num-key mb-4">Redes sociales</div>
+          <div class="flex flex-wrap gap-6">
+            <a href="#" class="social-link">LinkedIn ↗</a>
+            <a href="#" class="social-link">Instagram ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- right: form -->
+      <form id="contact-form" class="reveal" style="--delay: 120ms;" novalidate>
+
+        <div class="field" data-field="name">
+          <input type="text" id="f-name" name="name" placeholder=" " autocomplete="name" />
+          <label for="f-name">Nombre</label>
+          <span class="err-msg">Requerido</span>
+        </div>
+
+        <div class="field mt-8" data-field="email">
+          <input type="email" id="f-email" name="email" placeholder=" " autocomplete="email" />
+          <label for="f-email">Email</label>
+          <span class="err-msg">Email inválido</span>
+        </div>
+
+        <div class="field mt-8" data-field="message">
+          <textarea id="f-message" name="message" placeholder=" " rows="4"></textarea>
+          <label for="f-message">Mensaje</label>
+          <span class="err-msg">Cuéntame algo</span>
+        </div>
+
+        <div class="mt-12 flex items-center justify-between flex-wrap gap-6">
+          <button type="submit" class="btn btn-primary" id="submit-btn">
+            <span class="btn-label">Enviar mensaje</span>
+            <svg class="arrow" width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5h12m0 0L9 1m4 4L9 9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+
+          <div class="form-status mono" id="form-status" style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;"></div>
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="relative" style="border-top: 1px solid var(--line); padding-top: 56px; padding-bottom: 40px;">
+  <div class="container-x">
+
+    <!-- big italic outro -->
+    <div class="serif marquee-soft mb-16 reveal" style="font-size: clamp(56px, 13vw, 200px); line-height: 0.95; letter-spacing: -0.02em; white-space: nowrap; overflow: hidden;">Mejorar · la · vida · de · las · personas</div>
+
+    <div class="flex items-center justify-between flex-wrap gap-6">
+      <div class="flex items-center gap-3">
+        <img src="./images/logo-da-white.png" alt="DA" class="footer-logo" id="footer-logo" />
+        <span style="color: var(--fg-mute); font-size: 13px;">© 2026 Dr. David Araguás</span>
+      </div>
+
+      <div class="flex items-center gap-6">
+        <a href="#" class="social-link">LinkedIn</a>
+        <a href="#" class="social-link">Instagram</a>
+      </div>
+
+      <div class="mono" style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--fg-mute);">Made with Care</div>
+    </div>
+
+  </div>
+
+  <style>
+    .social-link {
+      font-size: 13px;
+      color: var(--fg-soft);
+      transition: color 200ms ease, transform 200ms ease;
+      display: inline-block;
+    }
+    .social-link:hover { color: var(--fg); transform: translateY(-1px); }
+  </style>
+</footer>
+
+<!-- ============ SCRIPTS ============ -->
+<script>
+  // ---------- navbar scroll ----------
+  const nav = document.getElementById('nav');
+  let lastY = 0;
+  function onScroll() {
+    const y = window.scrollY;
+    if (y > 24) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+    lastY = y;
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // ---------- mobile menu ----------
+  const menuBtn = document.getElementById('menu-btn');
+  const drawer = document.getElementById('mobile-drawer');
+  if (menuBtn) {
+    menuBtn.addEventListener('click', () => {
+      drawer.classList.toggle('hidden');
+    });
+    drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => drawer.classList.add('hidden')));
+  }
+
+  // ---------- scroll reveal ----------
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ---------- image fallback ----------
+  document.querySelectorAll('.img-frame img').forEach(img => {
+    img.addEventListener('error', () => {
+      img.parentElement.classList.add('broken');
+    });
+    // already cached but missing? check after load attempt
+    if (img.complete && img.naturalWidth === 0) {
+      img.parentElement.classList.add('broken');
+    }
+  });
+
+  // (logo fallback removed — real transparent PNG logos are now in place)
+
+  // ---------- form validation ----------
+  const form = document.getElementById('contact-form');
+  const statusEl = document.getElementById('form-status');
+  const submitBtn = document.getElementById('submit-btn');
+
+  function setError(name, hasError) {
+    const field = form.querySelector(`[data-field="${name}"]`);
+    if (!field) return;
+    field.classList.toggle('error', hasError);
+  }
+  function validEmail(s) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(s.trim());
+  }
+
+  ['name','email','message'].forEach(n => {
+    const input = form.querySelector(`[name="${n}"]`);
+    input.addEventListener('input', () => {
+      if (form.querySelector(`[data-field="${n}"]`).classList.contains('error')) {
+        validateField(n);
+      }
+    });
+  });
+
+  function validateField(n) {
+    const v = form.querySelector(`[name="${n}"]`).value.trim();
+    let ok = true;
+    if (n === 'name' && v.length < 2) ok = false;
+    if (n === 'email' && !validEmail(v)) ok = false;
+    if (n === 'message' && v.length < 5) ok = false;
+    setError(n, !ok);
+    return ok;
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const ok = ['name','email','message'].map(validateField).every(Boolean);
+
+    if (!ok) {
+      statusEl.textContent = '— Revisa los campos marcados';
+      statusEl.style.color = '#c97a6b';
+      statusEl.classList.add('visible');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    const label = submitBtn.querySelector('.btn-label');
+    const originalLabel = label.textContent;
+    label.textContent = 'Enviando...';
+    statusEl.classList.remove('visible');
+
+    const name = form.querySelector('[name="name"]').value.trim();
+    const email = form.querySelector('[name="email"]').value.trim();
+    const message = form.querySelector('[name="message"]').value.trim();
+    const subject = encodeURIComponent('Contacto web — ' + name);
+    const body = encodeURIComponent('Nombre: ' + name + '\nEmail: ' + email + '\n\n' + message);
+    window.location.href = 'mailto:contacto@davidaraguas.com?subject=' + subject + '&body=' + body;
+
+    await new Promise(r => setTimeout(r, 400));
+    label.textContent = 'Enviado ✓';
+    statusEl.textContent = '— Abriendo tu cliente de correo…';
+    statusEl.style.color = 'var(--fg)';
+    statusEl.classList.add('visible');
+
+    form.reset();
+    setTimeout(() => {
+      label.textContent = originalLabel;
+      submitBtn.disabled = false;
+      statusEl.classList.remove('visible');
+    }, 3000);
+  });
+</script>
+
+</body>
+</html>
+
+<style id="__om-edit-overrides">
+:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) >p:nth-child(4) { color: rgb(216, 207, 186) !important }
+.grid >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) >span:nth-child(1) { color: rgb(216, 207, 186) !important }
+:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) span:nth-child(5) { color: rgb(216, 207, 186) !important }
+</style>
