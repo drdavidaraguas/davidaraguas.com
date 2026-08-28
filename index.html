@@ -697,10 +697,6 @@
 
 </div>
 
-<!-- soft marquee divider — desktop only -->
-<div class="container-x reveal marquee-desktop" style="padding-top: 32px; padding-bottom: 24px;">
-  <div id="mq-top" class="serif marquee-soft" style="line-height: 1; letter-spacing: -0.02em; white-space: nowrap; overflow: visible; display: block;">salud · rendimiento · medicina</div>
-</div>
 
 <!-- ============ SOBRE MÍ ============ -->
 <section id="about" class="relative" style="padding-top: 80px; padding-bottom: 100px;">
@@ -990,10 +986,6 @@
   </div>
 </section>
 
-<!-- bottom marquee divider — desktop only -->
-<div class="container-x reveal marquee-desktop" style="padding-top: 32px; padding-bottom: 24px;">
-  <div id="mq-bottom" class="serif marquee-soft" style="line-height: 1; letter-spacing: -0.02em; white-space: nowrap; overflow: visible; display: block;">salud · rendimiento · medicina</div>
-</div>
 
 
 <!-- ============ FOOTER ============ -->
@@ -1035,37 +1027,6 @@
 
 
 
-  // fit marquee to full container width
-  (function() {
-    function fit(id) {
-      var el = document.getElementById(id);
-      if (!el) return;
-      el.style.fontSize = '10px';
-      var w = el.parentElement.clientWidth;
-      var lo = 10, hi = 800;
-      for (var i = 0; i < 30; i++) {
-        var mid = (lo + hi) / 2;
-        el.style.fontSize = mid + 'px';
-        (el.scrollWidth <= w) ? (lo = mid) : (hi = mid);
-      }
-      el.style.fontSize = lo + 'px';
-    }
-    function syncBottom() {
-      var t = document.getElementById('mq-top');
-      var b = document.getElementById('mq-bottom');
-      if (t && b) b.style.fontSize = t.style.fontSize;
-    }
-    function fitAll() {
-      fit('mq-top');
-      setTimeout(syncBottom, 50);
-    }
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(function() { fitAll(); setTimeout(fitAll, 150); });
-    } else {
-      window.addEventListener('load', function() { setTimeout(fitAll, 150); });
-    }
-    window.addEventListener('resize', fitAll);
-  })();
 
   // ---------- navbar scroll ----------
   const nav = document.getElementById('nav');
