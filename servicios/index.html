@@ -1,1 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Servicios — Dr. David Araguás</title>
 
+  <!-- No indexing -->
+  <meta name="robots" content="noindex, nofollow, noarchive" />
+  <meta name="googlebot" content="noindex, nofollow" />
+
+  <link rel="icon" type="image/png" href="./favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-2: #111110;
+      --line: #1f1f1d;
+      --line-strong: #2a2a27;
+      --fg: #ece3d0;
+      --fg-soft: #d8cfba;
+      --fg-mute: #8a857a;
+      --fg-dim: #5a564e;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Navbar */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      border-bottom: 1px solid var(--line);
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      padding: 0 40px; height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo-link { text-decoration: none; display: flex; align-items: center; gap: 10px; }
+    .logo-img { height: 32px; width: auto; }
+    .back-link {
+      font-size: 13px; color: var(--fg-mute); text-decoration: none;
+      letter-spacing: 0.04em; transition: color 200ms;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .back-link:hover { color: var(--fg); }
+
+    /* Container */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 120px 40px 100px;
+    }
+
+    /* Header */
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--fg-mute);
+      margin-bottom: 20px;
+      display: block;
+    }
+    h1 {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(36px, 5vw, 64px);
+      line-height: 1.05;
+      letter-spacing: 0em;
+      color: var(--fg);
+      margin-bottom: 16px;
+    }
+    .intro {
+      font-size: 17px;
+      color: var(--fg-soft);
+      max-width: 580px;
+      line-height: 1.65;
+      margin-bottom: 72px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    /* Services grid */
+    .services {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+    .service {
+      background: var(--bg-2);
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: background 200ms ease;
+      position: relative;
+    }
+    .service:hover { background: #161614; }
+    .service-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--fg-dim);
+      letter-spacing: 0.14em;
+    }
+    .service h2 {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(22px, 2.5vw, 30px);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: var(--fg);
+      font-weight: 400;
+    }
+    .service p {
+      font-size: 14px;
+      color: var(--fg-mute);
+      line-height: 1.65;
+      flex: 1;
+    }
+    .service-footer {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-top: 8px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+    .price {
+      font-family: 'Instrument Serif', serif;
+      font-size: 28px;
+      color: var(--fg);
+      letter-spacing: -0.01em;
+    }
+    .price-note {
+      font-size: 12px;
+      color: var(--fg-dim);
+      letter-spacing: 0.02em;
+    }
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--fg-mute);
+      border: 1px solid var(--line-strong);
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    /* CTA */
+    .cta-block {
+      margin-top: 64px;
+      padding: 40px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .cta-block h3 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 26px;
+      letter-spacing: -0.01em;
+      color: var(--fg);
+    }
+    .cta-block p {
+      font-size: 14px;
+      color: var(--fg-mute);
+      margin-top: 6px;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 24px;
+      background: var(--fg);
+      color: #0a0a0a;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: all 200ms ease;
+      flex-shrink: 0;
+    }
+    .btn-primary:hover { background: #fff; transform: translateY(-1px); }
+
+    /* Footer */
+    footer {
+      margin-top: 80px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    footer span { font-size: 12px; color: var(--fg-mute); }
+
+    @media (max-width: 700px) {
+      .services { grid-template-columns: 1fr; }
+      .container { padding: 100px 24px 80px; }
+      nav { padding: 0 24px; }
+      .cta-block { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="logo-link">
+      <img src="./logo-da-white.png" alt="DA" class="logo-img" />
+    </a>
+    <a href="/" class="back-link">← Volver</a>
+  </nav>
+
+  <div class="container">
+
+    <span class="eyebrow">Dr. David Araguás</span>
+    <h1>Servicios</h1>
+    <p class="intro">Colaboraciones profesionales en el ámbito de la salud digital, el alto rendimiento y la innovación médica. Cada proyecto es diferente — estos son los marcos de trabajo habituales.</p>
+
+    <div class="services">
+
+      <!-- 01 -->
+      <div class="service">
+        <div class="service-num">01</div>
+        <h2>Consultoría para empresas</h2>
+        <p>Para equipos que necesitan criterio médico en sus decisiones. Revisión de producto, validación clínica y orientación estratégica desde dentro del sector.</p>
+        <div class="service-footer">
+          <div>
+            <div class="price">Desde 1.500€</div>
+            <div class="price-note">por sesión / proyecto</div>
+          </div>
+          <span class="tag">Empresas</span>
+        </div>
+      </div>
+
+      <!-- 02 -->
+      <div class="service">
+        <div class="service-num">02</div>
+        <h2>Consultoría para emprendedores</h2>
+        <p>Una sesión directa para resolver dudas concretas. Ideal si estás en fase temprana y necesitas perspectiva clínica antes de seguir avanzando.</p>
+        <div class="service-footer">
+          <div>
+            <div class="price">49,99€</div>
+            <div class="price-note">sesión de 20 min</div>
+          </div>
+          <span class="tag">Emprendedores</span>
+        </div>
+      </div>
+
+      <!-- 03 -->
+      <div class="service">
+        <div class="service-num">03</div>
+        <h2>Asesoramiento en salud digital</h2>
+        <p>Acompaño proyectos de salud digital desde su definición hasta el lanzamiento. Modelo clínico, experiencia de usuario y cumplimiento normativo.</p>
+        <div class="service-footer">
+          <div>
+            <div class="price">Desde 800€</div>
+            <div class="price-note">por proyecto</div>
+          </div>
+          <span class="tag">Startups · Scaleups</span>
+        </div>
+      </div>
+
+      <!-- 04 -->
+      <div class="service">
+        <div class="service-num">04</div>
+        <h2>Conferencias y ponencias</h2>
+        <p>Ponencias en congresos, eventos corporativos y universidades. Temas habituales: salud digital, medicina del deporte, longevidad y el futuro de la atención médica.</p>
+        <div class="service-footer">
+          <div>
+            <div class="price">Desde 500€</div>
+            <div class="price-note">según formato y desplazamiento</div>
+          </div>
+          <span class="tag">Eventos</span>
+        </div>
+      </div>
+
+      <!-- 05 -->
+      <div class="service">
+        <div class="service-num">05</div>
+        <h2>Mentoría para startups de salud</h2>
+        <p>Acompañamiento continuado para fundadores que construyen en salud. Cada mes: revisión de avances, resolución de dudas clínicas y acceso a mi red del sector.</p>
+        <div class="service-footer">
+          <div>
+            <div class="price">Desde 300€</div>
+            <div class="price-note">/ mes · mínimo 3 meses</div>
+          </div>
+          <span class="tag">Healthtech</span>
+        </div>
+      </div>
+
+      <!-- 06 -->
+      <div class="service">
+        <div class="service-num">06</div>
+        <h2>Colaboraciones en medios</h2>
+        <p>Disponible para podcasts, entrevistas y artículos de opinión. Hablo de salud digital, medicina deportiva, longevidad e innovación en salud.</p>
+        <div class="service-footer">
+          <div>
+            <div class="price">A consultar</div>
+            <div class="price-note">según formato</div>
+          </div>
+          <span class="tag">Medios</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-block">
+      <div>
+        <h3>¿Hablamos?</h3>
+        <p>Si tienes algo entre manos y crees que puedo aportar, escríbeme.</p>
+      </div>
+      <a href="mailto:contacto@davidaraguas.com?subject=Consulta%20de%20servicios" class="btn-primary">
+        Contactar
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3M11 3H5M11 3v6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <footer>
+      <span>© 2026 Dr. David Araguás</span>
+      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase;">davidaraguas.com/servicios</span>
+    </footer>
+
+  </div>
+
+</body>
+</html>
